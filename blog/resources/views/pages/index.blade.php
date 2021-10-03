@@ -7,7 +7,7 @@
 @foreach($posts as $post)
     <div class="card mb-4">
         <div class="card-header">
-            <a href="#">{{$post->category['title']}}</a>
+            <a href="{{route("getPostByCategory",$post->category['slug'])}}">{{$post->category['title']}}</a>
         </div>
         <div class="card-body">
             <h5 class="card-title">{{$post->title}}</h5>
