@@ -12,22 +12,22 @@ class BlogController extends Controller
     #[Route("/", methods: ["GET"])]
     public function index()
     {
-        $posts = Post::all();
-        $categories=Category::all();
+        $posts = Post::paginate(5);
+        $categories = Category::all();
         return view('pages.index', [
             'posts' => $posts,
-            'categories'=>$categories
+            'categories' => $categories
         ]);
     }
 
     public function getPostByCategory($slug)
     {
         $current_category = Category::where('slug', $slug)->first();
-        $posts = $current_category->posts;
-        $categories=Category::all();
+        $posts = $current_category->posts()->paginate(5);
+        $categories = Category::all();
         return view('pages.index', [
             'posts' => $posts,
-            'categories'=>$categories
+            'categories' => $categories
         ]);
     }
 }

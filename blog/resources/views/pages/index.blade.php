@@ -4,19 +4,17 @@
 
 @section('content')
 
-@foreach($posts as $post)
-    <div class="card mb-4">
-        <div class="card-header">
-            <a href="{{route("getPostByCategory",$post->category['slug'])}}">{{$post->category['title']}}</a>
+    @foreach($posts as $post)
+        <div class="card mb-4">
+            <div class="card-header">
+                <a href="{{route("getPostByCategory",$post->category['slug'])}}">{{$post->category['title']}}</a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{$post->title}}</h5>
+                <p class="card-text">{{$post->description}}</p>
+                <a href="#" class="btn btn-primary">Read more</a>
+            </div>
         </div>
-        <div class="card-body">
-            <h5 class="card-title">{{$post->title}}</h5>
-            <p class="card-text">{{$post->description}}</p>
-            <a href="#" class="btn btn-primary">Read more</a>
-        </div>
-    </div>
-@endforeach
+    @endforeach
+    {{$posts->links('vendor.pagination.bootstrap-4')}}
 @endsection
-
-
-
