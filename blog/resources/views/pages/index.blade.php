@@ -4,8 +4,18 @@
 
 @section('content')
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cum doloribus error eveniet maxime mollitia nobis odio repellat! Architecto cupiditate deleniti dolor eaque fuga magnam quo quos veniam. Eligendi.</p>
-
+@foreach($posts as $post)
+    <div class="card mb-4">
+        <div class="card-header">
+            <a href="#">{{$post->category['title']}}</a>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{$post->title}}</h5>
+            <p class="card-text">{{$post->description}}</p>
+            <a href="#" class="btn btn-primary">Read more</a>
+        </div>
+    </div>
+@endforeach
 @endsection
 
 
