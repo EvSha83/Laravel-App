@@ -16,7 +16,7 @@ class PostSeeder extends Seeder
     {
         for ($i = 1; $i < 50; $i++)
             DB::table('posts')->insert([
-                'category_id' => rand(1, 10),
+                'category_id' => rand(1, 9),
                 'description' => 'description_' . $i,
                 'title' => 'title ' . $i,
                 'slug' => 'post-' . $i,
