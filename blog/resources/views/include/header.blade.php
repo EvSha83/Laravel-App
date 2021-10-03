@@ -13,6 +13,9 @@
                            href="{{route("getPostByCategory",$category->slug)}}">{{$category->title}}</a>
                     </li>
                 @endforeach
+                <li class="nav-item">
+                    <a class="btn" href="{{url()->previous()}}">Back</a>
+                </li>
             </ul>
         </div>
     </div>
