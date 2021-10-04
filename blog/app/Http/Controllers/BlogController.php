@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -39,5 +40,17 @@ class BlogController extends Controller
             'post' => $post,
             'categories' => $categories
         ]);
+    }
+
+    public function createComment($post_id, Request $request)
+    {
+        $validData = $request->validate([
+            'username' => 'required|max:70|min:2',
+            'comment' => 'required|min:2'
+        ]);
+        $validData['post_id'] = $post_id;
+        Comment::create($validData);
+        return back()->with('success', 'Comment created');
+
     }
 }

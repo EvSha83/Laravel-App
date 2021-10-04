@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',  [BlogController::class,'index'])->name('home');
 Route::get('/category/{slug}',  [BlogController::class,'getPostByCategory'])->name('getPostByCategory');
 Route::get('/post/{slug}',  [BlogController::class,'getPost'])->name('getPost');
+Route::post('/comment/create/{post_id}',  [BlogController::class,'createComment'])->name('createComment');
