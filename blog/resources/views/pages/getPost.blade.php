@@ -7,5 +7,6 @@
         {!! $post->content !!}
     </article>
     @include('include.comment_form')
+    @include('include.comments_people')
 </div>
 @endsection
