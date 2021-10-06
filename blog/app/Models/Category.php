@@ -12,4 +12,8 @@ class Category extends Model
     public function posts(){
         return $this->hasMany(Post::class)->orderBy('created_at','DESC');
     }
+
+    public function scopeSortTitle($query){
+        return $query -> orderBy('title');
+    }
 }

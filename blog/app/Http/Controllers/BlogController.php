@@ -14,7 +14,7 @@ class BlogController extends Controller
     public function index()
     {
         $posts = Post::paginate(5);
-        $categories = Category::all();
+        $categories = Category::sortTitle()->get();
         return view('pages.index', [
             'posts' => $posts,
             'categories' => $categories
@@ -25,7 +25,7 @@ class BlogController extends Controller
     {
         $current_category = Category::where('slug', $slug)->first();
         $posts = $current_category->posts()->paginate(5);
-        $categories = Category::all();
+        $categories = Category::sortTitle()->get();
         return view('pages.index', [
             'posts' => $posts,
             'categories' => $categories
@@ -35,7 +35,7 @@ class BlogController extends Controller
     public function getPost($slug)
     {
         $post = Post::where("slug", $slug)->first();
-        $categories = Category::all();
+        $categories = Category::sortTitle()->get();
         return view('pages.getPost', [
             'post' => $post,
             'categories' => $categories
@@ -51,6 +51,5 @@ class BlogController extends Controller
         $validData['post_id'] = $post_id;
         Comment::create($validData);
         return back()->with('success', 'Comment created');
-
     }
 }
